@@ -298,7 +298,7 @@ class StrictRedis(object):
             'BITCOUNT BITPOS DECRBY DEL GETBIT HDEL HLEN INCRBY LINSERT LLEN '
             'LPUSHX PFADD PFCOUNT RPUSHX SADD SCARD SDIFFSTORE SETBIT '
             'SETRANGE SINTERSTORE SREM STRLEN SUNIONSTORE ZADD ZCARD '
-            'ZLEXCOUNT ZREM ZREMRANGEBYLEX ZREMRANGEBYRANK ZREMRANGEBYSCORE',
+            'ZLEXCOUNT ZREM ZREMRANGEBYLEX ZREMRANGEBYRANK ZREMRANGEBYSCORE, GEOADD',
             int
         ),
         string_keys_to_dict('INCRBYFLOAT HINCRBYFLOAT', float),
@@ -1840,6 +1840,12 @@ class StrictRedis(object):
     def hgetall(self, name):
         "Return a Python dict of the hash's name/value pairs"
         return self.execute_command('HGETALL', name)
+
+    def geoadd(self, name, longitude, latitude, member, *args):
+        return self.execute_command('GEOADD', name, longitude, latitude, member, *args)
+
+    def geopos(self, name, member, *args):
+        return self.execute_command('GEOPOS', name, member, *args)
 
     def hincrby(self, name, key, amount=1):
         "Increment the value of ``key`` in hash ``name`` by ``amount``"
