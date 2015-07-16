@@ -1847,6 +1847,9 @@ class StrictRedis(object):
     def geopos(self, name, member, *args):
         return self.execute_command('GEOPOS', name, member, *args)
 
+    def georadius(self, name, longitude, latitude, radius, meter='m', *args):
+        return self.execute_command('GEORADIUS', name, longitude, latitude, radius, meter, *args)
+
     def hincrby(self, name, key, amount=1):
         "Increment the value of ``key`` in hash ``name`` by ``amount``"
         return self.execute_command('HINCRBY', name, key, amount)
