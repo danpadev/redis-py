@@ -32,7 +32,7 @@ f.close()
 
 setup(
     name='redis',
-    version=__version__,
+    version='2.10.3.1',
     description='Python client for Redis key-value store',
     long_description=long_description,
     url='http://github.com/andymccurdy/redis-py',
